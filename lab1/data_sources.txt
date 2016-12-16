@@ -1,0 +1,8 @@
+For our project we only chose one dataset https://community.tableau.com/docs/DOC-1236, a Superstore sales record. The dataset
+was published by Tableau, and comes in a xlsx format which we easily converted to csv. One reason we chose specific attributes,
+such as locational columns and product information, is so that we could discover patterns between product sales and client locations.
+One challenge with working with this data will be creating a complete product directory that can be used for reference in all customer orders. 
+
+
+
+

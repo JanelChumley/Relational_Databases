@@ -1,0 +1,3 @@
+[Finished in 18.2s]
+17 records imported
+No error messages 
