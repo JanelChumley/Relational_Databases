@@ -1,4 +1,4 @@
-This code is from four consecutive and related lab projects from CS327E - Elements of Databases at UT Austin. 
+Four consecutive and related lab projects from CS327E - Elements of Databases at UT Austin. 
 
 Lab 1: Data Modeling and Schema Design - ER diagrams of conceptual and logical models, data dictionary, and SQL script with logical to physical schema translation
 
