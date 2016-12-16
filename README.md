@@ -1,1 +1,3 @@
-I took a course on relational databases at UT-Austin in Fall 2016. Here's are the SQL and Python scripts from the labs. 
+I took a course on relational databases at UT-Austin in Fall 2016. Here's my SQL and Python code from the lab exercises. 
+
+
