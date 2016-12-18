@@ -2,8 +2,8 @@ Four consecutive and related lab projects from CS327E - Elements of Databases at
 
 Lab 1: Data Modeling and Schema Design - ER diagrams of conceptual and logical models, data dictionary, and logical to physical schema translation in mySQL.
 
-Lab 2: Data Loading - PyMySQL database interface is used to perform insert, delete, and alter statements.
+Lab 2: Data Loading - PyMySQL database interface is used to perform insert, delete, and alter statements in MySQL.
 
-Lab3: Development of a command-line user-interface in Python and mySQL.
+Lab3: Development of a command-line user-interface in Python and MySQL.
 
 Final Project: Data collection using the Twitter RESTful API client.
