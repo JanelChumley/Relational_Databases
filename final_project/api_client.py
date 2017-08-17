@@ -2,17 +2,14 @@ import time
 import json
 import pymysql
 import re
+import os
 import tweepy
 from db_connect import *
 
-# API_KEY = 'SOsAJ1CJ9yjKwHLx3LRBu8pkd'
-# API_SECRET = 'tQUjNxPMFfQnAMsjWYpJyKY5UQZIsrMSthbHXbsA5BNfifmzDm'
-# TOKEN_KEY = '118243516-xDhyXoGVm2zjbHKaUoJiQwSj93ACnuqMrsuNhZT0'
-# TOKEN_SECRET = 'RR8RWjnku5aFC5iFiyEKgf24WauQAjasqX6tVWyGZxxWa'
-API_KEY = 'Pl5EsORVQATl0LFI6RC3Oc394'
-API_SECRET = '0hn4QnFmLeC5to4oYD1ADyFt40Zmss7YGXhVNh1RiNEBewMCFB'
-TOKEN_KEY = '118243516-MZm0NuYtN3Q2Q26NzhXHmM6wy0xfNYvAE62L6TAU'
-TOKEN_SECRET = 'igc08gcddXbH9SrkjaRsxoDwmhjyIwUkaiWg5ANiR2LBM'
+API_KEY=os.environ['API_KEY']
+API_SECRET=os.environ['API_SECRET']
+TOKEN_KEY=os.environ['TOKEN_KEY']
+TOKEN_SECRET=os.environ['TOKEN_SECRET']
 def get_api_instance():
   auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
   auth.set_access_token(TOKEN_KEY, TOKEN_SECRET)
