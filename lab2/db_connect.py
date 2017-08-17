@@ -3,9 +3,9 @@ import pymysql
 def create_connection():
 	try:
 		connection = pymysql.connect(host="127.0.0.1",   # MySQL hostname
-                                     user="root",        # MySQL username, default is root
-                                     passwd="jr43872",   # MySQL password
-                                     db="superstore")        # MySQL db name
+                                     user=user,        # MySQL username, default is root
+                                     passwd=password,   # MySQL password
+                                     db=superstore)        # MySQL db name
 		return connection
 	except pymysql.Error as error:
 		print "connection error: ", error
