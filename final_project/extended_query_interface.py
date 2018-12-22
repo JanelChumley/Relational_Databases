@@ -15,9 +15,6 @@ def print_menu():
 
 def num_products_cat_query():
     is_success = True
-    # Here are the queries for each of the options
-    #unit price by category
-
     print "You have chosen to show the number of products by category. What category would you like to choose?"
     print "1. Technology"
     print "2. Office Supplies"
@@ -61,56 +58,6 @@ def num_products_cat_query():
     except pymysql.Error as e:
         is_success = False
         print "products by category: " + str(e)
-
-    return is_success
-def num_products_cat_query():
-    is_success = True
-    # Here are the queries for each of the options
-    #unit price by category
-
-    print "You have chosen to show the number of products by category. What category would you like to choose?"
-    print "1. Technology"
-    print "2. Office Supplies"
-    print "3. Furniture"
-    print "4. All product categories"
-    choice = input("Enter your choice [1-4]: ")
-    stmt = "SELECT product_category_name, COUNT(*) num_products\n" \
-           "FROM product_vw\n" \
-           "GROUP BY product_category_name\n" \
-           "HAVING product_category_name = %s;"
-    if choice in (1,2,3):
-        if choice == 1:
-            paramtrs = 'Technology'
-        elif choice == 2:
-            paramtrs = 'Office Supplies'
-        elif choice == 3:
-            paramtrs = 'Furniture'
-    elif choice == 4:
-        stmt = "SELECT product_category_name, COUNT(*) num_products FROM product_vw GROUP BY product_category_name;"
-    else:
-        print "Wrong choice! Try again "
-        num_products_cat_query()
-
-    try:
-        connection = create_connection()
-        cursor = connection.cursor()
-        if (choice in (1, 2, 3)):
-            query_status = run_prepared_stmt(cursor, stmt, (paramtrs))
-        #calling run_stmt since the query for all categories doesn't require parameters
-        else:
-            query_status = run_stmt(cursor, stmt)
-        if query_status is False:
-            is_success = False
-
-        results = cursor.fetchall()
-        print ""
-        for row in results:
-            print row
-        print ""
-
-    except pymysql.Error as e:
-        is_success = False
-        print "number of products by category: " + str(e)
 
     return is_success
 
@@ -194,7 +141,6 @@ def customers_segment_query():
             cursor = connection.cursor()
             if (choice in (1, 2, 3,4)):
                 query_status = run_prepared_stmt(cursor, stmt, (paramtrs))
-            # calling run_stmt since the query for all customer segments doesn't require parameters
             else:
                 query_status = run_stmt(cursor, stmt)
             if query_status is False:
@@ -208,11 +154,10 @@ def customers_segment_query():
         except pymysql.Error as e:
             is_success = False
             print "customers by region query: " + str(e)
-
         return is_success
+
 def num_orders_region_query():
     is_success = True
-
     print "You have chosen to explore order counts by region. What would you like to choose?"
     print "1. Central"
     print "2. East"
@@ -243,23 +188,20 @@ def num_orders_region_query():
             cursor = connection.cursor()
             if (choice in (1, 2, 3,4)):
                 query_status = run_prepared_stmt(cursor, stmt, (paramtrs))
-            # calling run_stmt since the query for all regions doesn't require parameters
             else:
                 query_status = run_stmt(cursor, stmt)
             if query_status is False:
                 is_success = False
-
             results = cursor.fetchall()
             print ""
             for row in results:
                 print row
             print ""
-
         except pymysql.Error as e:
             is_success = False
             print "num_orders by region query: " + str(e)
-
         return is_success
+        
 def num_orders_year_query():
     is_success = True
 

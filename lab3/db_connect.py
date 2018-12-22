@@ -1,11 +1,17 @@
 import pymysql
+import os
+
+import os
+host=os.environ['LOCAL_HOST']
+user=os.environ['LOCAL_USER']
+password=os.environ['LOCAL_PASSWORD']
 
 def create_connection():
 	try:
-		connection = pymysql.connect(host="127.0.0.1",   # MySQL hostname
-                                     user="root",        # MySQL username, default is root
-                                     passwd="jr43872",   # MySQL password
-                                     db="superstore")        # MySQL db name
+		connection = pymysql.connect(host=host,  
+                                     user=user,      
+                                     passwd=password,   
+                                     db="superstore")    
 		return connection
 	except pymysql.Error as error:
 		print "connection error: ", error
@@ -24,9 +30,9 @@ def run_select(cursor, select_stmt):
         conn = create_connection()
         cursor = conn.cursor()
         cursor.execute(select_stmt)
-        # return result
     except pymysql.Error as error:
         print "insert error: ", error
+
 def run_delete(delete_stmt):
 	try:
 		conn = create_connection()
@@ -52,6 +58,7 @@ def do_commit(connection):
 		print "commit error: ", error
 		is_success = False
 	return is_success
+
 def run_stmt(cursor, sql_stmt):
 	is_success = True
 	try:
@@ -69,7 +76,6 @@ def run_prepared_stmt(cursor, stmt, paramtrs):
 		print "execute error: ", error
 		is_success = False
 	return is_success
-
 
 def destroy_connection(connection):
 	connection.close()
