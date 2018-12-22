@@ -12,7 +12,6 @@ def print_menu():
     print "7. Twitter data related to searches on calculators and keyboards"
     print "8. Exit the program"
 
-
 def num_products_cat_query():
     is_success = True
     print "You have chosen to show the number of products by category. What category would you like to choose?"
@@ -37,28 +36,23 @@ def num_products_cat_query():
     else:
         print "Wrong choice! Try again: "
         num_products_cat_query()
-
     try:
         connection = create_connection()
         cursor = connection.cursor()
         if choice in (1,2,3):
             query_status = run_prepared_stmt(cursor,stmt,(paramtrs))
-        # calling run_stmt since the query for all product categories doesn't require parameters
         else:
             query_status = run_stmt(cursor, stmt)
         if query_status is False:
             is_success = False
-
         results = cursor.fetchall()
         print ""
         for row in results:
             print row
         print ""
-
     except pymysql.Error as e:
         is_success = False
         print "products by category: " + str(e)
-
     return is_success
 
 def customers_region_query():
@@ -91,12 +85,10 @@ def customers_region_query():
             cursor = connection.cursor()
             if (choice in (1, 2, 3,4)):
                 query_status = run_prepared_stmt(cursor, stmt, (paramtrs))
-            # calling run_stmt since the query for all regions doesn't require parameters
             else:
                 query_status = run_stmt(cursor, stmt)
             if query_status is False:
                 is_success = False
-
             results = cursor.fetchall()
             print ""
             for row in results:
@@ -105,8 +97,8 @@ def customers_region_query():
         except pymysql.Error as e:
             is_success = False
             print "customers by region query: " + str(e)
-
         return is_success
+
 def customers_segment_query():
     is_success = True
     print "You have chosen to show the number of customers by customer segment. What segment would you like to choose?"
@@ -145,7 +137,6 @@ def customers_segment_query():
                 query_status = run_stmt(cursor, stmt)
             if query_status is False:
                 is_success = False
-
             results = cursor.fetchall()
             print ""
             for row in results:
@@ -181,7 +172,7 @@ def num_orders_region_query():
     else:
         print ("That's not a valid input. Please try again" )
         num_orders_region_query()
-
+        
     while(choice in (1,2,3,4,5)):
         try:
             connection = create_connection()
@@ -201,10 +192,9 @@ def num_orders_region_query():
             is_success = False
             print "num_orders by region query: " + str(e)
         return is_success
-        
+
 def num_orders_year_query():
     is_success = True
-
     print "You have chosen order counts by year. What would you like to choose?"
     print "1. 2010"
     print "2. 2011"
@@ -234,23 +224,20 @@ def num_orders_year_query():
         cursor = connection.cursor()
         if (choice in (1, 2, 3)):
             query_status = run_prepared_stmt(cursor, stmt, (paramtrs))
-        # calling run_stmt since the query for all years doesn't require parameters
         else:
             query_status = run_stmt(cursor, stmt)
         if query_status is False:
             is_success = False
-
         results = cursor.fetchall()
         print ""
         for row in results:
             print row
         print ""
-
     except pymysql.Error as e:
         is_success = False
         print "num_orders by year query: " + str(e)
-
     return is_success
+
 def ave_unit_price_cat_query():
     is_success = True
     print "You have chosen to show the number of products by category. What category would you like to choose?"
@@ -272,28 +259,23 @@ def ave_unit_price_cat_query():
     else:
         print "Wrong choice! Try again: "
         num_products_cat_query()
-
     try:
         connection = create_connection()
         cursor = connection.cursor()
         if (choice in (1, 2, 3)):
             query_status = run_prepared_stmt(cursor, stmt, (paramtrs))
-        # this is for a query that doesn't require parameters
         else:
             query_status = run_stmt(cursor, stmt)
         if query_status is False:
             is_success = False
-
         results = cursor.fetchall()
         print ""
         for row in results:
             print row
         print ""
-
     except pymysql.Error as e:
         is_success = False
         print "number of products by category: " + str(e)
-
     return is_success
 
 def tweets():
@@ -335,26 +317,22 @@ def tweets():
         query_status = run_stmt(cursor, stmt)
         if query_status is False:
             is_success = False
-
         results = cursor.fetchall()
         print ""
         for row in results:
             print row
         print ""
-
-
     except pymysql.Error as e:
         is_success = False
         print
         "tweets by product names and by product subcategory: " + str(e)
-
     return is_success
+
 while True:
     print_menu()
     choice = input("Enter your choice [1-8]: ")
     if choice==1:
         num_products_cat_query()
-
     elif choice==2:
         customers_region_query()
     elif choice == 3:
