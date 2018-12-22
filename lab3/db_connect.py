@@ -1,7 +1,6 @@
 import pymysql
 import os
 
-import os
 host = os.environ['LOCAL_HOST']
 user = os.environ['LOCAL_USER']
 password = os.environ['LOCAL_PASSWORD']
